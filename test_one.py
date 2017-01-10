@@ -1,14 +1,23 @@
-import datetime
-
-class Formatter:
-	def format_date(self, inp, outp):
-		return datetime.datetime.strptime('10/05/2012', '%d/%m/%Y').strftime('%Y-%m-%d')
+from one import sin, cos, tan
+from nose.tools import *
+import math
 
 
-def test():
-	instance = Formatter()
-	try:
-		var = instance.format_date()
-		
-	finally:
-		pass
+def setupf():
+	"Set up the instance for testing"
+	pass
+
+def teardownf():
+	"Tear down the instance"
+	pass
+
+# sin
+
+@with_setup(setupf, teardownf)
+def test_sin_values():
+	for x in [-2, -.1, 0, .1, 2]:
+		yield check_sin_values, x
+
+def check_sin_values(x):
+	"Test for a valid float argument"
+	assert_almost_equals(math.sin(.1), sin(.1), places=4)
